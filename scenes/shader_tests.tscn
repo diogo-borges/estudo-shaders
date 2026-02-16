@@ -4,6 +4,26 @@
 [ext_resource type="Texture2D" uid="uid://pxfm7hyettow" path="res://icon.svg" id="2_p4mh4"]
 [ext_resource type="Shader" uid="uid://bemm7e2kqu35d" path="res://shaders/move_top_y_shader.tres" id="3_2kxrx"]
 [ext_resource type="Texture2D" uid="uid://bxoevbafv6t5s" path="res://Tree2.png" id="4_p4mh4"]
+[ext_resource type="Shader" uid="uid://duenbsxv2tbij" path="res://shaders/water.tres" id="5_2kxrx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bo7m0"]
+shader = ExtResource("3_2kxrx")
+shader_parameter/wind_strenght = 8.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rq0ds"]
+shader = ExtResource("5_2kxrx")
+shader_parameter/ColorParameter = Color(0.25882354, 0.39607844, 0.6431373, 1)
+shader_parameter/first_movement = Vector2(0.02, 0.01)
+shader_parameter/second_movement = Vector2(-0.03, -0.05)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_2kxrx"]
+noise_type = 2
+fractal_type = 0
+cellular_distance_function = 1
+domain_warp_enabled = true
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yuhch"]
+noise = SubResource("FastNoiseLite_2kxrx")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yuhch"]
 shader = ExtResource("1_a4iy5")
@@ -11,15 +31,7 @@ shader_parameter/vertical = false
 shader_parameter/invert_direction = false
 shader_parameter/speed = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bo7m0"]
-shader = ExtResource("3_2kxrx")
-shader_parameter/wind_strenght = 8.0
-
 [node name="Node2D" type="Node2D" unique_id=1308430455]
-
-[node name="Icon" type="Sprite2D" parent="." unique_id=57390554]
-material = SubResource("ShaderMaterial_yuhch")
-texture = ExtResource("2_p4mh4")
 
 [node name="Árvore" type="Sprite2D" parent="." unique_id=1224406124]
 material = SubResource("ShaderMaterial_bo7m0")
@@ -28,6 +40,12 @@ texture = ExtResource("4_p4mh4")
 region_enabled = true
 region_rect = Rect2(39, 0, 114, 256)
 
-[node name="Icon3" type="Sprite2D" parent="." unique_id=910992112]
-position = Vector2(105, 231)
+[node name="Icon2" type="Sprite2D" parent="." unique_id=978108206]
+material = SubResource("ShaderMaterial_rq0ds")
+position = Vector2(639.56256, 360)
+scale = Vector2(2.5524902, 1.4960936)
+texture = SubResource("NoiseTexture2D_yuhch")
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=57390554]
+material = SubResource("ShaderMaterial_yuhch")
 texture = ExtResource("2_p4mh4")
