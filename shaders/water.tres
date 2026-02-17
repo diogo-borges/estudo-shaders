@@ -43,6 +43,8 @@ seamless = true
 texture = SubResource("NoiseTexture2D_rfrcl")
 
 [sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_yktrg"]
+default_input_values = [0, Vector2(0, 0), 1, Vector2(0, 0)]
+op_type = 0
 
 [sub_resource type="VisualShaderNodeFloatFunc" id="VisualShaderNodeFloatFunc_xw8xi"]
 function = 0
@@ -80,7 +82,7 @@ parameter_name = "first_movement"
 [resource]
 mode = 1
 flags/light_only = false
-nodes/fragment/0/position = Vector2(640, -60)
+nodes/fragment/0/position = Vector2(850, -30)
 nodes/fragment/3/node = SubResource("VisualShaderNodeColorParameter_243dc")
 nodes/fragment/3/position = Vector2(-840, -220)
 nodes/fragment/4/node = SubResource("VisualShaderNodeTexture_wjwk1")
@@ -111,4 +113,4 @@ nodes/fragment/17/node = SubResource("VisualShaderNodeVectorOp_yktrg")
 nodes/fragment/17/position = Vector2(255.30801, 538.3356)
 nodes/fragment/18/node = SubResource("VisualShaderNodeFloatFunc_xw8xi")
 nodes/fragment/18/position = Vector2(-1221.5671, 550.1997)
-nodes/fragment/connections = PackedInt32Array(10, 0, 7, 2, 6, 0, 0, 0, 3, 0, 6, 0, 7, 0, 11, 0, 11, 0, 4, 0, 14, 0, 15, 0, 13, 0, 14, 2, 9, 0, 10, 0, 8, 0, 10, 1, 15, 0, 16, 0, 16, 0, 17, 1, 4, 0, 17, 0, 17, 0, 6, 1, 12, 0, 13, 1, 8, 0, 18, 0, 18, 0, 13, 0)
+nodes/fragment/connections = PackedInt32Array(10, 0, 7, 2, 7, 0, 11, 0, 11, 0, 4, 0, 14, 0, 15, 0, 13, 0, 14, 2, 9, 0, 10, 0, 8, 0, 10, 1, 15, 0, 16, 0, 16, 0, 17, 1, 4, 0, 17, 0, 17, 0, 6, 1, 12, 0, 13, 1, 8, 0, 18, 0, 18, 0, 13, 0, 6, 0, 0, 0, 3, 0, 6, 0)
