@@ -48,15 +48,12 @@ colors = PackedColorArray(1, 1, 1, 1)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_bo7m0"]
 gradient = SubResource("Gradient_yuhch")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bo7m0"]
-shader = ExtResource("3_2kxrx")
-shader_parameter/wind_strenght = 8.0
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rq0ds"]
 shader = ExtResource("5_2kxrx")
-shader_parameter/ColorParameter = Color(0.3403813, 0.48895174, 0.7545247, 1)
-shader_parameter/first_movement = Vector2(0.02, 0.01)
-shader_parameter/second_movement = Vector2(-0.03, -0.05)
+shader_parameter/ColorParameter = Color(0.34064347, 0.48899934, 0.7547807, 1)
+shader_parameter/first_movement = Vector2(0.06, 0.06)
+shader_parameter/second_movement = Vector2(-0.05, -0.05)
+shader_parameter/Alpha = 0.73600003496
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_2kxrx"]
 noise_type = 2
@@ -65,7 +62,13 @@ cellular_distance_function = 1
 domain_warp_enabled = true
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yuhch"]
+width = 1280
+height = 720
 noise = SubResource("FastNoiseLite_2kxrx")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bo7m0"]
+shader = ExtResource("3_2kxrx")
+shader_parameter/wind_strenght = 8.0
 
 [node name="Node2D" type="Node2D" unique_id=1308430455]
 
@@ -75,11 +78,17 @@ scale = Vector2(10.0078125, 5.7265625)
 texture = ExtResource("2_p4mh4")
 centered = false
 
-[node name="water" type="Sprite2D" parent="." unique_id=1395589709]
+[node name="water2" type="Sprite2D" parent="." unique_id=1395589709]
+visible = false
 material = SubResource("ShaderMaterial_d1a43")
 position = Vector2(635.50006, 348)
 scale = Vector2(5.5507813, 852)
 texture = SubResource("GradientTexture1D_bo7m0")
+
+[node name="water1" type="Sprite2D" parent="." unique_id=978108206]
+material = SubResource("ShaderMaterial_rq0ds")
+texture = SubResource("NoiseTexture2D_yuhch")
+centered = false
 
 [node name="Árvore" type="Sprite2D" parent="." unique_id=1224406124]
 material = SubResource("ShaderMaterial_bo7m0")
@@ -136,9 +145,3 @@ position = Vector2(948, 471)
 texture = ExtResource("4_p4mh4")
 region_enabled = true
 region_rect = Rect2(39, 0, 114, 256)
-
-[node name="Icon2" type="Sprite2D" parent="." unique_id=978108206]
-material = SubResource("ShaderMaterial_rq0ds")
-position = Vector2(1940, 473.00003)
-scale = Vector2(2.5524902, 1.4960936)
-texture = SubResource("NoiseTexture2D_yuhch")
