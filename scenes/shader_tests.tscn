@@ -6,12 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bxoevbafv6t5s" path="res://Tree2.png" id="4_p4mh4"]
 [ext_resource type="Shader" uid="uid://duenbsxv2tbij" path="res://shaders/water.tres" id="5_2kxrx"]
 [ext_resource type="Shader" uid="uid://dxritlalxew8p" path="res://shaders/water_2.tres" id="6_yuhch"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_yuhch"]
-shader = ExtResource("1_a4iy5")
-shader_parameter/vertical = false
-shader_parameter/invert_direction = false
-shader_parameter/speed = 0.0
+[ext_resource type="Shader" uid="uid://rytcfr6tc0uu" path="res://shaders/fire.tres" id="7_bo7m0"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_yuhch"]
 seed = 5
@@ -66,28 +61,50 @@ width = 1280
 height = 720
 noise = SubResource("FastNoiseLite_2kxrx")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yuhch"]
+shader = ExtResource("1_a4iy5")
+shader_parameter/vertical = false
+shader_parameter/invert_direction = false
+shader_parameter/speed = 0.0
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bo7m0"]
 shader = ExtResource("3_2kxrx")
 shader_parameter/wind_strenght = 8.0
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_nc6nj"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_djak1"]
+width = 1280
+noise = SubResource("FastNoiseLite_nc6nj")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_je8r1"]
+shader = ExtResource("7_bo7m0")
+shader_parameter/outer_color = Color(1, 0, 0, 1)
+shader_parameter/inner_color = Color(1, 1, 0, 1)
+shader_parameter/speed = 0.5
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_djak1")
+shader_parameter/start = 0.10000000475
+shader_parameter/end = 0.6000000285
+
 [node name="Node2D" type="Node2D" unique_id=1308430455]
 
-[node name="Icon" type="Sprite2D" parent="." unique_id=57390554]
-material = SubResource("ShaderMaterial_yuhch")
-scale = Vector2(10.0078125, 5.7265625)
-texture = ExtResource("2_p4mh4")
-centered = false
-
 [node name="water2" type="Sprite2D" parent="." unique_id=1395589709]
-visible = false
 material = SubResource("ShaderMaterial_d1a43")
 position = Vector2(635.50006, 348)
 scale = Vector2(5.5507813, 852)
 texture = SubResource("GradientTexture1D_bo7m0")
 
 [node name="water1" type="Sprite2D" parent="." unique_id=978108206]
+visible = false
 material = SubResource("ShaderMaterial_rq0ds")
 texture = SubResource("NoiseTexture2D_yuhch")
+centered = false
+
+[node name="Panning" type="Sprite2D" parent="." unique_id=57390554]
+material = SubResource("ShaderMaterial_yuhch")
+position = Vector2(743, 207)
+texture = ExtResource("2_p4mh4")
 centered = false
 
 [node name="Árvore" type="Sprite2D" parent="." unique_id=1224406124]
@@ -145,3 +162,9 @@ position = Vector2(948, 471)
 texture = ExtResource("4_p4mh4")
 region_enabled = true
 region_rect = Rect2(39, 0, 114, 256)
+
+[node name="Fire" type="Sprite2D" parent="." unique_id=1700087194]
+material = SubResource("ShaderMaterial_je8r1")
+position = Vector2(640.49994, 360.50006)
+scale = Vector2(9.9609375, 5.6015635)
+texture = ExtResource("2_p4mh4")
